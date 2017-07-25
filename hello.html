@@ -1,0 +1,36 @@
+<script src="https://unpkg.com/vue/dist/vue.js">
+</script>
+
+<div id="app">
+    <h1>{{title}}</h1>
+    <input type="text" v-on:input="changeTitle">
+    <p>
+    {{title}} - <a v-bind:href="link">Google</a>
+    </p>
+    {{ sayHello()}}
+    <hr>
+    <p>
+    {{finishedLink}}
+    <p v-html="finishedLink"></p>
+    </p> 
+</div>
+
+<script>
+new Vue({
+    el:'#app',
+    methods: {
+        changeTitle: function(event) {
+            this.title = event.target.value;
+        },
+        sayHello: function() {
+            this.title = 'Hello!';
+            return this.title;
+        }
+    },
+    data: {
+        title: 'Hello World!',
+        link: 'http://google.com',
+        finishedLink: '<a href="http://google.com">Google</a>'
+    }
+})
+</script>
